@@ -8,4 +8,3 @@
 
 let iniciaJogo = require ("./batalhaNaval.js");
 iniciaJogo.exportadorIniciaJogo()
-
