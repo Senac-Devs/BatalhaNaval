@@ -26,7 +26,7 @@ console.log("               = ǁ ")
 console.log("               = ǁ ")
 console.log("               = v ")
 console.log(" Bomba         = * ")
-console.table(tabuleiro)
+// console.table(tabuleiro)
 }
 
 

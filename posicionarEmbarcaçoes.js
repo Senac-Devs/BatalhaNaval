@@ -118,7 +118,7 @@ function Posicionamento(tab, tamanhoNavio) {
   return tab;
 };
 
-tabela = Tabela();
+// tabela = Tabela();
 tamanhoNavio = NavioX(tamanhoNavio);
 tabela = Posicionamento(tabela, tamanhoNavio);
 console.table(tabela);
