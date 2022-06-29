@@ -85,36 +85,48 @@ function Posicionamento(tab, tamanhoNavio) {
   while (jogando) {
     let [linha, coluna, direçao] = Coordenada(coordenada);
     if (tab[linha][coluna] != "~") {
-        console.log("Posição já utilizada!\nEscolha outro local!"
+        console.log("Posição já utilizada!\nEscolha outro local!")
       continue;
-        }
+        };
     if (direçao == "H") {
       if (coluna + tamanhoNavio - 1 <= 4) {
         for (let i = 0; i < tamanhoNavio; i++) {
-          tab[linha][coluna] = "X";
-          tab[linha][coluna + i] = "X";
-        }
-        break;
+          if (i == 0) {
+            tab[linha][coluna + i] = "<"
+          }
+          else if (i == tamanhoNavio - 1) {
+            tab[linha][coluna + i] = ">"
+          }
+          else { 
+            tab[linha][coluna + i] = "="
+          };
+        };
       }
       else {
-        console.log("Tente novamente!\nVocê não pode colocar um navio na horizontal nesta posição!")
+        console.log ("Tente novamente!\nVocê não pode colocar um navio na horizontal nesta posição!")
         continue;
       };
+    break;
     }
     else if (direçao == "V") {
       if (linha + tamanhoNavio - 1 <= 4) {
         for (let i = 0; i < tamanhoNavio; i++) {
-          if (i == 1) {
-            tab[linha][coluna] = ""
+          if (i == 0) {
+            tab[linha + i][coluna] = "ʌ"
           }
-          tab[linha + i][coluna] = "X";
+          else if (i == tamanhoNavio - 1) {
+            tab[linha + i][coluna] = "v"
+          }
+          else { 
+            tab[linha + i][coluna] = "ǁ" 
+          };
         };
-        break;
       }
       else {
         console.log("Tente novamente!\nVocê não pode colocar um navio na vertical nesta posição!")
         continue;
       };
+        break;
     }
     else {
       console.log("Direção inválida!\nTente novamente!")
