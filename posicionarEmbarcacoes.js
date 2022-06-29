@@ -13,24 +13,31 @@ function Tabela() {
   return tabela;
 };
 function NavioX(tamanhoNavio) {
-  info = true;
-  console.log("Esses são seus navios:\nPequeno: XX\nMédio: XXX\nGrande:XXXX\nQual deseja posicionar?\n");
-  while (info) {
+  info = 0;
+  let opçoes = [];
+  console.log("Esses são seus navios:\n(Você pode posicionar um de cada)\n\nPequeno: <>\nMédio: <=>\nGrande:<==>\n\nQual deseja posicionar?\n");
+  while (info < 3) {
     tamanhoNavio = prompt("Utilize as iniciais para chamá-los(P, M, G)");
-    if (tamanhoNavio == "P") {
+    if (tamanhoNavio == "P"
+        && opçoes[0] != 1) {
       tamanhoNavio = 2;
-      break;
+      opçoes.push[0] = 1;
+      info++;
     }
-    else if (tamanhoNavio == "M") {
+    else if (tamanhoNavio == "M"
+            && opçoes[1] != 1) {
       tamanhoNavio = 3;
-      break;
+      opçoes.push[1] = 1;
+      info++;
     }
-    else if (tamanhoNavio == "G") {
+    else if (tamanhoNavio == "G"
+            && opçoes[2] != 1) {
       tamanhoNavio = 4;
-      break;
+      opçoes.push[2] = 1;
+      info++;
     }
     else {
-      console.log("Tamanho inválido, tente novamente!")
+      console.log("Tamanho inválido ou já utilizado, tente novamente!")
       continue;
     };
   };
@@ -85,9 +92,9 @@ function Posicionamento(tab, tamanhoNavio) {
   while (jogando) {
     let [linha, coluna, direçao] = Coordenada(coordenada);
     if (tab[linha][coluna] != "~") {
-        console.log("Posição já utilizada!\nEscolha outro local!")
+      console.log("Posição já utilizada!\nEscolha outro local!")
       continue;
-        };
+    };
     if (direçao == "H") {
       if (coluna + tamanhoNavio - 1 <= 4) {
         for (let i = 0; i < tamanhoNavio; i++) {
