@@ -48,7 +48,7 @@ function RodarBombas () {
             coordenadas == ~
                 console.log("Nenhuma embarcação atingida")
         } else if (jogada) {
-            jogada == ">" || jogada == "<" || jogada == "=" || jogada == "=" ||
+            jogada == ">" || jogada == "<" || jogada == "=" || jogada == "="|| jogada == "v" ||jogada == "ʌ" ||
                 console.log("Parte do navio acertada!")
             jogada = jogada + 1;
         }
