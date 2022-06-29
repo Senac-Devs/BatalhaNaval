@@ -4,7 +4,7 @@ let modelBombas = require ("./logicaBombas.js");
 function tipoNavios() {
     let logica = require("./logicaDeVisualizacao.js");
     let tabuleiro = logica.apresentaLogica();
-    console.log(tabuleiro)
+    // console.log(tabuleiro)
     return tabuleiro
 }
 
@@ -37,7 +37,7 @@ function apresentacao() {
   function iniciaJogo() {
     let tabuleiro = apresentacao()
     // posicionar()
-    tabuleiro[0][0]="<"
+    // tabuleiro[0][0]=""
     modelBombas.RodarBombas(tabuleiro)    
 
   }
