@@ -1,3 +1,6 @@
+let modelBombas = require ("./logicaBombas.js");
+
+
 function tipoNavios() {
   let logica = require("./logicaDeVisualizacao.js");
   logica.apresentaLogica();
@@ -28,7 +31,8 @@ function apresentacao() {
   function iniciaJogo() {
     apresentacao()
     // posicionar()
-
+      
+    modelBombas.RodarBombas()    
 
   }
   // modulo de chamada para o index.js
