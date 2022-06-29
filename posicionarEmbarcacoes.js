@@ -84,16 +84,12 @@ function Posicionamento(tab, tamanhoNavio) {
   let jogando = true;
   while (jogando) {
     let [linha, coluna, direçao] = Coordenada(coordenada);
-    if (tab[linha][coluna] == "<" 
-        || tab[linha][coluna] == ">"
-        || tab[linha][coluna] == "="
-        || tab[linha][coluna] == "ʌ"
-        || tab[linha][coluna] == "v") {
-      console.log("Posição já utilizada!\nEscolha outro local!")
+    if (tab[linha][coluna] != "~") {
+        console.log("Posição já utilizada!\nEscolha outro local!"
       continue;
         }
     if (direçao == "H") {
-      if (linha + tamanhoNavio <= 4) {
+      if (coluna + tamanhoNavio - 1 <= 4) {
         for (let i = 0; i < tamanhoNavio; i++) {
           tab[linha][coluna] = "X";
           tab[linha][coluna + i] = "X";
@@ -106,9 +102,11 @@ function Posicionamento(tab, tamanhoNavio) {
       };
     }
     else if (direçao == "V") {
-      if (linha + tamanhoNavio <= 4) {
+      if (linha + tamanhoNavio - 1 <= 4) {
         for (let i = 0; i < tamanhoNavio; i++) {
-          tab[linha][coluna] = "X";
+          if (i == 1) {
+            tab[linha][coluna] = ""
+          }
           tab[linha + i][coluna] = "X";
         };
         break;
