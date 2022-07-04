@@ -1,55 +1,58 @@
 let tabuleiro = []
+var escolhaNavio
 
-function logicaVisualizacao() { // RenatoTonelli 22jun1647 - funcao criada para ser chamado no jogo
+function posicionar() {
+  let posicionar = require("./posicionarEmbarcacoes.js");
+  posicionar.posicionamento();
+}
+
+
+function logicaVisualizacao() {
   let tabuleiro = []
-for (let i = 0; i < 5; i++) {
-  tabuleiro.push([])
-   for (let j = 0; j < 5; j++) {
-    tabuleiro[i].push("~")
-// console.clear()
+  for (let i = 0; i < 5; i++) {
+    tabuleiro.push([])
+    for (let j = 0; j < 5; j++) {
+      tabuleiro[i].push("~")
+    }
+  }
+  console.log("     Água          = ~ ")
+  console.log(" 1 - Navio pequeno = <> ")
+  console.log("               = n")
+  console.log("               = v ")
+  console.log(" 2 - Navio Médio   = <=> ")
+  console.log("               = ʌ ")
+  console.log("               = ǁ ")
+  console.log("               = v ")
+  console.log(" 3 - Navio Grande  = <==> ")
+  console.log("               = ʌ ")
+  console.log("               = ǁ ")
+  console.log("               = ǁ ")
+  console.log("               = v ")
+  console.log("     Bomba         = # \n")
+
+escolhaNavio = prompt("Escolha o tipo de navio ")
+
+let check = true
+  
+while (check){
+if (escolhaNavio == 1 || escolhaNavio == 2 || escolhaNavio == 3){
+  escolhaNavio = escolhaNavio
+  check = false
+   posicionar()
+} else
+  escolhaNavio = prompt("Escolha o tipo de navio 1, 2 ou 3 ")
   }
 }
 
-console.log("******** Jogo  ******")
-// ʌ
-console.log(" Água          = ~ ")
-console.log(" Navio pequeno = <> ")
-console.log("               = ʌ ")
-console.log("               = v ")
-console.log(" Navio Médio   = <=> ")
-console.log("               = ʌ ")
-console.log("               = ǁ ")
-console.log("               = v ")
-console.log(" Navio Grande  = <==> ")
-console.log("               = ʌ ")
-console.log("               = ǁ ")
-console.log("               = ǁ ")
-console.log("               = v ")
-console.log(" Bomba         = * ")
-console.table(tabuleiro)
+function posicionar() {
+  let posicionar = require("./posicionarEmbarcacoes.js");
+  posicionar.posicionamento();
 }
 
 
-
-// Por RenatoTonelli 22jun-1651 - criando uma simples chamada para apresentacao do jogo
+///modudo de exportacao///
 module.exports = {
-  "apresentaLogica":logicaVisualizacao
+  "apresentaLogica": logicaVisualizacao ()
 }
 
 
-// let tabuleiro1 = []
-// for (let m = 0; m < 5; m++) {
-//   tabuleiro1.push([])
-//    for (let s = 0; s < 5; s++) {
-//     tabuleiro1[m].push("-")
-// let linha = parseFloat(prompt("Insira a linha "))
-//   let coluna = parseFloat(prompt("Insira a coluna"))
-//   let escolha = prompt("Insira a X ou 0")
-// console.clear()
-//   tabuleiro[linha][coluna] = escolha
-  // console.table(tabuleiro)
-
-// <> <=> <==>  *  o desenho
-  // }
-// }
-//      console.table(tabuleiro1)

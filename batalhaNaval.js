@@ -27,4 +27,3 @@ function iniciaJogo() {
 module.exports = {
   "exportadorIniciaJogo": iniciaJogo
 }
-
