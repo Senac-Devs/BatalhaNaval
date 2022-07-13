@@ -1,6 +1,5 @@
 let modelBombas = require ("./logicaBombas.js");
 
-
 function tipoNavios() {
   let logica = require("./logicaDeVisualizacao.js");
   logica.apresentaLogica();
