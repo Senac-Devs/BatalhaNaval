@@ -1,4 +1,5 @@
 let modelBombas = require ("./logicaBombas.js");
+const prompt = require("prompt-sync")();
 
 function tipoNavios() {
   let logica = require("./logicaDeVisualizacao.js");
@@ -20,7 +21,7 @@ function apresentacao() {
     "\n")
   console.log("!! Vamos Jogar !!")
   console.log("Qualquer caracter = sim")
-  let jogar = prompt("Ou so enter para nao - ")
+  let jogar = prompt("Ou so enter para nao")
   if (!jogar == "") {
     console.clear()
     tipoNavios()
