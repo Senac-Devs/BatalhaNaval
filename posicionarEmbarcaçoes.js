@@ -1,5 +1,5 @@
 const prompt = require("prompt-sync")();
-let tamanhoNavio = [];
+const tamanhoNavio = [ [ 'P', 2 ], [ 'M', 3 ], [ 'G', 4 ] ];
 let coordenada;
 let tabela;
 function Tabela() {
@@ -13,27 +13,13 @@ function Tabela() {
   console.table(tabela);
   return tabela;
 };
-function NavioX(tamanhoNavio) {
-  info = true;
-  console.log("Esses são seus navios:\nPequeno: <>\nMédio: <=>\nGrande:<==>\nEles serão posicionados nessa mesma ordem.\n");
-    for (let i = 0; i < 3; i++) {
-      tamanhoNavio.push([])
-    };
-    for (let i = -1; i < 2; i++) {
-      tamanhoNavio[0 + i][1] = 2 + i
-    };
-    tamanhoNavio[0][0] = "P";
-    tamanhoNavio[1][0] = "M";
-    tamanhoNavio[2][0] = "G";
-    console.log(tamanhoNavio);
-    return tamanhoNavio();
-};
 function Coordenada(coordenada) {
   let linha;
   let info = true;
   let coluna;
   let direçao;
   while (info) {
+    console.log("Esses são seus navios:\nPequeno: <>\nMédio: <=>\nGrande:<==>\nEles serão posicionados nessa mesma ordem.\n\n");
     console.log("Onde deseja posicionar?");
     coordenada = prompt("Letras (Maiúsculas) primeiro!");
     coordenada = coordenada.split("");
@@ -75,15 +61,9 @@ function Posicionamento(tab, tamanhoNavio) {
   let jogando = true;
   while (jogando) {
     let [linha, coluna, direçao] = Coordenada(coordenada);
-    if ((coluna != 4)
-      || (tamanhoNavio <= 3 && coluna != 3)
-      || (tamanhoNavio != 4 && coluna <= 2)) {
-      if (direçao == "H") {
-        for (let i = 0; i < tamanhoNavio; i++) {
-          tab[linha][coluna] = "X";
-          tab[linha][coluna + i] = "X";
-        };
-        break;
+    if (tamanhoNavio[0][1] + coluna >! 5) {
+      if 
+    }
       }
       else {
         console.log("Tente novamente!\nVocê não pode colocar um navio na horizontal nesta posição!")
@@ -110,12 +90,10 @@ function Posicionamento(tab, tamanhoNavio) {
 };
 
 tabela = Tabela();
-tamanhoNavio = NavioX(tamanhoNavio);
 tabela = Posicionamento(tabela, tamanhoNavio);
 console.table(tabela);
 // tabela = Tabela();
 // console.table(tabela);
-tamanhoNavio = NavioX(tamanhoNavio);
 tabela = Posição()
 console.table(tabela);
 
@@ -123,6 +101,3 @@ console.table(tabela);
 // posicionar.Posicionamento(tab, tamanhoNavio);
 
 // Por RenatoTonelli 22jun-1600 - criando uma simples chamada para apresentacao do jogo
-module.exports = {
-  "posicionar":NavioX
-}
