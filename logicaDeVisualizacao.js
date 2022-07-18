@@ -1,6 +1,6 @@
 let tabuleiro = []
 
-function logicaVisualizacao() { // RenatoTonelli 22jun1647 - funcao criada para ser chamado no jogo
+function logicaVisualizacao() { // Funcao criada para ser chamado no jogo
   let tabuleiro = []
 for (let i = 0; i < 5; i++) {
   tabuleiro.push([])
@@ -31,7 +31,7 @@ console.table(tabuleiro)
 
 
 
-// Por RenatoTonelli 22jun-1651 - criando uma simples chamada para apresentacao do jogo
+//Criando uma simples chamada para apresentacao do jogo
 module.exports = {
   "apresentaLogica":logicaVisualizacao
 }
