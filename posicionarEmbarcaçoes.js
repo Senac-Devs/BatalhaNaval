@@ -1,4 +1,5 @@
-let tamanhoNavio;
+const prompt = require("prompt-sync")();
+let tamanhoNavio = [];
 let coordenada;
 let tabela;
 function Tabela() {
@@ -14,28 +15,18 @@ function Tabela() {
 };
 function NavioX(tamanhoNavio) {
   info = true;
-  console.log("Esses são seus navios:\nPequeno: XX\nMédio: XXX\nGrande:XXXX\nQual deseja posicionar?\n");
-  while (info) {
-    tamanhoNavio = prompt("Utilize as iniciais para chamá-los(P, M, G)");
-    if (tamanhoNavio == "P") {
-      tamanhoNavio = 2;
-      break;
-    }
-    else if (tamanhoNavio == "M") {
-      tamanhoNavio = 3;
-      break;
-    }
-    else if (tamanhoNavio == "G") {
-      tamanhoNavio = 4;
-      break;
-    }
-    else {
-      console.log("Tamanho inválido, tente novamente!")
-      continue;
+  console.log("Esses são seus navios:\nPequeno: <>\nMédio: <=>\nGrande:<==>\nEles serão posicionados nessa mesma ordem.\n");
+    for (let i = 0; i < 3; i++) {
+      tamanhoNavio.push([])
     };
-  };
-  console.log(tamanhoNavio);
-  return tamanhoNavio;
+    for (let i = -1; i < 2; i++) {
+      tamanhoNavio[0 + i][1] = 2 + i
+    };
+    tamanhoNavio[0][0] = "P";
+    tamanhoNavio[1][0] = "M";
+    tamanhoNavio[2][0] = "G";
+    console.log(tamanhoNavio);
+    return tamanhoNavio();
 };
 function Coordenada(coordenada) {
   let linha;
