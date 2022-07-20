@@ -17,7 +17,7 @@ function bombas(tabuleiro, linha, coluna) {
     var jogadorAtual;
     var forma = "+";
     jogadorAtual = forma;
-    bombas[linha][coluna] = barco
+    // bombas[linha][coluna] = barco
     console.table(tabuleiro)
     return acertou
 }
@@ -40,6 +40,7 @@ function RodarBombas () {
     var navio2 = 3;
     var navio3 = 4;
     var jogada;
+    var coordenadas
     var acertou = 0;
     var foiAfundado = false;
     
@@ -55,7 +56,7 @@ function RodarBombas () {
         }
     
         if (jogada == navio1 || jogada == navio2 || jogada == navio3) {
-            alert("acerte mais um quadro!");
+            alert("acerte mais um quadro!")
             acertou = acertou + 1;
             if (acertou == 3) {
                 foiAfundado = true;
