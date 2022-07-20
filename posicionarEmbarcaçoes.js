@@ -1,5 +1,5 @@
 const prompt = require("prompt-sync")();
-const tamanhoNavio = [ [ 'P', 2 ], [ 'M', 3 ], [ 'G', 4 ] ];
+const tamanhoNavio = [2, 3, 4];
 let coordenada;
 let tabela;
 function Tabela() {
@@ -23,9 +23,8 @@ function Coordenada(coordenada) {
     console.log("Onde deseja posicionar?");
     coordenada = prompt("Letras (Maiúsculas) primeiro!");
     coordenada = coordenada.split("");
+    console.log(coordenada)
     coluna = parseInt(coordenada[1]);
-    console.log("Vertical ou Horizontal");
-    direçao = prompt("V para vertical e H para horizontal: ");
     if (coluna < 0 || coluna > 4) {
       console.log("Coordenada inválida, tente novamente!");
       continue;
@@ -55,27 +54,32 @@ function Coordenada(coordenada) {
       continue;
     };
   };
+  console.log("Vertical ou Horizontal");
+  direçao = prompt("V para vertical e H para horizontal: ");
   return [linha, coluna, direçao];
 };
-function Navios (tab, tamanhoNavio, X) {
+function Navios (tab, tamanhoNavio) {
 
-  Posicionamento(tab, tamanhoNavio, 0);
+  tab = Posicionamento(tab, tamanhoNavio, 0);
+  console.table(tab);
+  tab = Posicionamento(tab, tamanhoNavio, 1);
+  console.table(tab);
+  tab = Posicionamento(tab, tamanhoNavio, 2);
 
-  Posicionamento(tab, tamanhoNavio, 1);
-
-  Posicionamento(tab, tamanhoNavio, 2);
+  return tab;
 }
-function Posicionamento(tab, tamanhoNavio, X) {
+function Posicionamento(tabela, tamanhoNavio, X) {
   let jogando = true;
   while (jogando) {
     let [linha, coluna, direçao] = Coordenada(coordenada);
-    if (direçao == H 
-      && tamanhoNavio[X][1] + coluna >! 5) {
-     for (let c = 0; c < tamanhoNavio[X][1]; c++) {
+    console.log(coluna, tamanhoNavio, direçao, X);
+    if ((direçao == "H" || direçao == "h")
+      && tamanhoNavio[X] + coluna <= 5) {
+     for (let c = 0; c < tamanhoNavio[X]; c++) {
       if (c == 0) {
       tabela[linha][coluna] = "<";
       }
-      else if (c == tamanhoNavio[X][1] - 1) {
+      else if (c == tamanhoNavio[X]- 1) {
         tabela[linha][coluna + c] = ">";
       }
      else { tabela[linha][coluna + c] = "="; }
@@ -85,13 +89,13 @@ function Posicionamento(tab, tamanhoNavio, X) {
       console.log("Tente novamente!\nVocê não pode colocar um navio na horizontal nesta posição!")
       continue;
     };
-    if (direçao == V 
-      && tamanhoNavio[X][1] + linha >! 5) {
-      for (let c = 0; c < tamanhoNavio[X][1]; c++) {
+    if (direçao == "V" || direçao =="v"
+      && tamanhoNavio[X] + tabela[linha] >! 5) {
+      for (let c = 0; c < tamanhoNavio[X]; c++) {
         if (c == 0) {
         tabela[linha][coluna] = "ʌ";
         }
-        else if (c == tamanhoNavio[X][1] - 1) {
+        else if (c == tamanhoNavio[X] - 1) {
         tabela[linha + c][coluna] = "v";
         }
         else { tabela[linha + c][coluna] = "ǁ"; }
@@ -102,9 +106,10 @@ function Posicionamento(tab, tamanhoNavio, X) {
       continue;
     };
   };
+  return tabela;
 };
 tabela = Tabela();
-tabela = Navios()
+tabela = Navios(tabela, tamanhoNavio)
 console.table(tabela);
 // tabela = Tabela();
 // console.table(tabela);
