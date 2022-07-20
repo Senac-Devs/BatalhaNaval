@@ -57,40 +57,54 @@ function Coordenada(coordenada) {
   };
   return [linha, coluna, direçao];
 };
-function Posicionamento(tab, tamanhoNavio) {
+function Navios (tab, tamanhoNavio, X) {
+
+  Posicionamento(tab, tamanhoNavio, 0);
+
+  Posicionamento(tab, tamanhoNavio, 1);
+
+  Posicionamento(tab, tamanhoNavio, 2);
+}
+function Posicionamento(tab, tamanhoNavio, X) {
   let jogando = true;
   while (jogando) {
     let [linha, coluna, direçao] = Coordenada(coordenada);
-    if (tamanhoNavio[0][1] + coluna >! 5) {
-      if 
+    if (direçao == H 
+      && tamanhoNavio[X][1] + coluna >! 5) {
+     for (let c = 0; c < tamanhoNavio[X][1]; c++) {
+      if (c == 0) {
+      tabela[linha][coluna] = "<";
+      }
+      else if (c == tamanhoNavio[X][1] - 1) {
+        tabela[linha][coluna + c] = ">";
+      }
+     else { tabela[linha][coluna + c] = "="; }
+     };
     }
-      }
-      else {
-        console.log("Tente novamente!\nVocê não pode colocar um navio na horizontal nesta posição!")
-        continue;
-      };
+    else {
+      console.log("Tente novamente!\nVocê não pode colocar um navio na horizontal nesta posição!")
+      continue;
     };
-    if ((linha != 4)
-      || (tamanhoNavio <= 3 && linha != 3)
-      || (tamanhoNavio != 4 && linha <= 2)) {
-      if (direçao == "V") {
-        for (let i = 0; i < tamanhoNavio; i++) {
-          tab[linha][coluna] = "X";
-          tab[linha + i][coluna] = "X";
-        };
-        break;
-      }
-      else {
-        console.log("Tente novamente!\nVocê não pode colocar um navio na vertical nesta posição!")
-        continue;
+    if (direçao == V 
+      && tamanhoNavio[X][1] + linha >! 5) {
+      for (let c = 0; c < tamanhoNavio[X][1]; c++) {
+        if (c == 0) {
+        tabela[linha][coluna] = "ʌ";
+        }
+        else if (c == tamanhoNavio[X][1] - 1) {
+        tabela[linha + c][coluna] = "v";
+        }
+        else { tabela[linha + c][coluna] = "ǁ"; }
       };
+    }
+    else {
+      console.log("Tente novamente!\nVocê não pode colocar um navio na vertical nesta posição!")
+      continue;
     };
   };
-  return tab;
 };
-
 tabela = Tabela();
-tabela = Posicionamento(tabela, tamanhoNavio);
+tabela = Navios()
 console.table(tabela);
 // tabela = Tabela();
 // console.table(tabela);
