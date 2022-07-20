@@ -32,7 +32,7 @@ function apresentacao() {
     apresentacao()
     // posicionar()
       
-    modelBombas.RodarBombas()    
+    modelBombas.lancarBombas()    
 
   }
   // modulo de chamada para o index.js
