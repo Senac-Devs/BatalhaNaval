@@ -33,8 +33,8 @@ function apresentacao() {
   function iniciaJogo() {
     let tabuleiro = apresentacao()
     // posicionar()
-    // tabuleiro[0][0]=""
-    modelBombas.RodarBombas(tabuleiro)    
+      
+    modelBombas.lancarBombas()    
 
   }
   // modulo de chamada para o index.js

@@ -1,57 +1,19 @@
 const prompt = require("prompt-sync")();
 module.exports = {
-  "RodarBombas":RodarBombas
+  "lancarBombas":lancarBombas
 }
 
-function bombas(tabuleiro, linha, coluna) {
-    let acertou = true;
-    if (tabuleiro[linha][coluna] == "~") {
+function lancarBombas (tabuleiro, linha, coluna) {
+    let acertou;
+    if (tabuleiro[linha][coluna] == "~" ||
+    tabuleiro[linha][coluna] == "x" || 
+    tabuleiro[linha][coluna] == "*" ) {
         acertou = false
-
-    } else { acertou = true }
-    
-    return acertou
-    
-}
-
-function RodarBombas (tabuleiro) { 
-    console.table(tabuleiro)
-    let linha = prompt("Digite a linha: ")
-    let coluna = prompt("Digite a coluna:")
-    
-   let acertou = bombas(tabuleiro, linha, coluna);
-    if (acertou) {
-        console.log("Parte do navio acertada!")
+        // tabuleiro[linha][coluna] = "x"
     } else {
-     console.log("Nenhuma embarcação atingida")
+        acertou = true
+        // tabuleiro[linha][coluna]= "*"
     }
+
+    return acertou
 }
-    
-    // var navio1 = 2;
-    // var navio2 = 3;
-    // var navio3 = 4;
-    // var jogada;
-    // var acertou = 0;
-    // var foiAfundado = false;
-    
-    // while (!foiAfundado) {
-    //     jogada = prompt(bombas);
-    //     if (jogada) {
-    //         coordenadas == ~
-    //             console.log("Nenhuma embarcação atingida")
-    //     } else if (jogada) {
-    //         jogada == ">" || jogada == "<" || jogada == "=" || jogada == "="|| jogada == "v" ||jogada == "ʌ" ||
-    //             console.log("Parte do navio acertada!")
-    //         jogada = jogada + 1;
-    //     }
-    
-    //     if (jogada == navio1 || jogada == navio2 || jogada == navio3) {
-    //         alert("acerte mais um quadro!");
-    //         acertou = acertou + 1;
-    //         if (acertou == 3) {
-    //             foiAfundado = true;
-    //             alert("navio totalmente afundado!");
-    //         }
-    
-    //     }
-    // }
