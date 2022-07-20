@@ -27,10 +27,13 @@ function logicaVisualizacao() {
     console.log("               = ǁ ");
     console.log("               = v ");
     console.log(" Bomba         = * ");
+    console.log(" acertou       = ☑ ");
+    console.log(" errou         = x ")
     console.table(tabuleiro);
 }
 function visualizacaoAcerto() {
-  
+  let visor = [];
+
   console.table()
 }
 
