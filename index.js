@@ -9,3 +9,4 @@
 const prompt = require("prompt-sync")();
 let iniciaJogo = require ("./batalhaNaval.js");
 iniciaJogo.exportadorIniciaJogo()
+

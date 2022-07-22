@@ -1,14 +1,7 @@
-let modelBombas = require ("./logicaBombas.js");
 const prompt = require("prompt-sync")();
-
 function tipoNavios() {
   let logica = require("./logicaDeVisualizacao.js");
   logica.apresentaLogica();
-}
-
-function posicionar() {
-  let posicionar = require("./posicionarEmbarcaçoes.js");
-  posicionar.posicionamento();
 }
 
 function apresentacao() {
@@ -20,22 +13,19 @@ function apresentacao() {
     "\nganha quem derrubar todos os navios adversários primeiro." +
     "\n")
   console.log("!! Vamos Jogar !!")
-  console.log("Qualquer caracter = sim")
-  let jogar = prompt("Ou so enter para nao")
+  console.log("Qualquer caractere = sim")
+  let jogar = prompt("Ou so enter para não -> ")
   if (!jogar == "") {
     console.clear()
     tipoNavios()
   } else console.log(" \n !! Que pena !!")
 }
 
-  function iniciaJogo() {
-    apresentacao()
-    // posicionar()
-      
-    modelBombas.lancarBombas()    
+function iniciaJogo() {
+  apresentacao()
+}
+// modulo de chamada para o index.js
+module.exports = {
+  "exportadorIniciaJogo": iniciaJogo
+}
 
-  }
-  // modulo de chamada para o index.js
-  module.exports = {
-    "exportadorIniciaJogo": iniciaJogo
-  }
