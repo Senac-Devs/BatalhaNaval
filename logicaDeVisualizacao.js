@@ -33,6 +33,7 @@ function logicaVisualizacao() {
 }
 function visualizacaoAcerto() {
   let visor = [];
+  
 
   console.table()
 }
