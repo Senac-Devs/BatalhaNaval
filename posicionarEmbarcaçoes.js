@@ -1,13 +1,14 @@
+const { geraTabuleiro } = require("./logicaDeVisualizacao");
 const prompt = require("prompt-sync")();
 const tamanhoNavio = [2, 3, 4];
-let coordenada;
-let tabela;
+let tabela = geraTabuleiro();
 
-function Coordenada(tabuleiro) {
+function Coordenada(tabela) {
+  console.log(tabela);
+  let coordenada;
   let linha;
-  let info = true;
   let coluna;
-  let direçao;
+  let info = true;
   while (info) {
     console.log("Esses são seus navios:\nPequeno: <>\nMédio: <=>\nGrande:<==>\nEles serão posicionados nessa mesma ordem.\n\n");
     console.log("Onde deseja posicionar?");
@@ -20,23 +21,23 @@ function Coordenada(tabuleiro) {
       continue;
     }
     if (coordenada[0] == "A") {
-      linha = 0;
+      linha = parseInt(0);
       break;
     }
     else if (coordenada[0] == "B") {
-      linha = 1;
+      linha = parseInt(1);
       break;
     }
     else if (coordenada[0] == "C") {
-      linha = 2;
+      linha = parseInt(2);
       break;
     }
     else if (coordenada[0] == "D") {
-      linha = 3;
+      linha = parseInt(3);
       break;
     }
     else if (coordenada[0] == "E") {
-      linha = 4;
+      linha = parseInt(4);
       break;
     }
     else {
@@ -44,28 +45,41 @@ function Coordenada(tabuleiro) {
       continue;
     };
   };
-  console.log("Vertical ou Horizontal");
-  direçao = prompt("V para vertical e H para horizontal: ");
-  return [linha, coluna, direçao];
+  return [linha, coluna, coordenada];
 };
 
-function Navios (tab, tamanhoNavio) {
-
-  tab = Posicionamento(tab, tamanhoNavio, 0);
-  console.table(tab);
-  tab = Posicionamento(tab, tamanhoNavio, 1);
-  console.table(tab);
-  tab = Posicionamento(tab, tamanhoNavio, 2);
-
+function Navios (tabela, coluna, tamanhoNavio,) {
+  
+  tabela = Posicionamento(tabela, coluna, tamanhoNavio, 0);
+  console.table(tabela);
+  tabela = Posicionamento(tabela, coluna, tamanhoNavio, 1);
+  console.table(tabela);
+  tabela = Posicionamento(tabela, coluna, tamanhoNavio, 2);
+  
   return tab;
 }
-function Posicionamento(tabela, tamanhoNavio, X) {
+function Posicionamento(tabela, coluna, tamanhoNavio, X) {
+  let direcao;
   let jogando = true;
   while (jogando) {
-    let [linha, coluna, direçao] = Coordenada(coordenada);
-    console.log(coluna, tamanhoNavio, direçao, X);
-    if ((direçao == "H" || direçao == "h")
-      && tamanhoNavio[X] + coluna <= 5) {
+    console.log("Vertical ou Horizontal");
+    direcao = prompt("V para vertical e H para horizontal: ");
+    if (direcao == "V" || direcao =="v") {
+      for (let c = 0; c < tamanhoNavio[X]; c++) {
+        if (c == 0) {
+          tabela[linha][coluna] = "ʌ";
+        }
+        else if (c == tamanhoNavio[X] - 1) {
+          tabela[linha + c][coluna] = "v";
+        }
+        else { tabela[linha + c][coluna] = "ǁ"; }
+      };
+    }
+    else {
+      console.log("Tente novamente!\nVocê não pode colocar um navio na vertical nesta posição!")
+      continue;
+    };
+    if (direcao == "H" || direcao == "h") {
      for (let c = 0; c < tamanhoNavio[X]; c++) {
       if (c == 0) {
       tabela[linha][coluna] = "<";
@@ -80,24 +94,8 @@ function Posicionamento(tabela, tamanhoNavio, X) {
       console.log("Tente novamente!\nVocê não pode colocar um navio na horizontal nesta posição!")
       continue;
     };
-    if (direçao == "V" || direçao =="v"
-      && tamanhoNavio[X] + tabela[linha] >! 5) {
-      for (let c = 0; c < tamanhoNavio[X]; c++) {
-        if (c == 0) {
-        tabela[linha][coluna] = "ʌ";
-        }
-        else if (c == tamanhoNavio[X] - 1) {
-        tabela[linha + c][coluna] = "v";
-        }
-        else { tabela[linha + c][coluna] = "ǁ"; }
-      };
-    }
-    else {
-      console.log("Tente novamente!\nVocê não pode colocar um navio na vertical nesta posição!")
-      continue;
-    };
   };
-  return tabela;
+  return [tabela, direcao];
 };
 // tabela = Tabela();
 // tabela = Navios(tabela, tamanhoNavio)
@@ -114,5 +112,6 @@ function Posicionamento(tabela, tamanhoNavio, X) {
 
 
 module.exports = {
-  "Coordenada":Coordenada
+  "Coordenada":Coordenada(),
+  "Posicionar":Posicionamento()
 }
