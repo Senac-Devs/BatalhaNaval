@@ -7,8 +7,8 @@ function iniciaJogo() {
   let querJogar = logica.apresentacao();
   if (querJogar){
     let tabuleiro = logica.geraTabuleiro()
-    posicionar.Coordenada(tabuleiro);
-    modelBombas.RodarBombas();    
+    posicionar.Funcionamento(tabuleiro);
+    // modelBombas.lancarBombas();    
   }
 }
 // modulo de chamada para o index.js
