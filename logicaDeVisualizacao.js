@@ -1,12 +1,11 @@
 const prompt = require("prompt-sync")();
 
-function logicaVisualizacao() { 
 function geraTabuleiro(){
   let tabuleiro = []
   for (let i = 0; i < 5; i++) {
     tabuleiro.push([])
     for (let j = 0; j < 5; j++) {
-      tabuleiro[i].push("~")
+      tabuleiro[i].push("\033[7;30;41m ~ \033[m")
     }
   }
   return tabuleiro
@@ -33,28 +32,35 @@ function apresentacao() {
 }
 
 
-function logicaVisualizacao() { // RenatoTonelli 22jun1647 - funcao criada para ser chamado no jogo
+function logicaVisualizacao() { 
   let tabuleiro = geraTabuleiro()
 
   console.log("******** Jogo  ******")
   // ʌ
-  console.log(" Água          = ~ ")
-  console.log(" Navio pequeno = <> ")
+  console.log(" Água          =  \033[1;30;41m~\033[m")
+  console.log(" Navio pequeno = \033[7;32;44m<>\033[m")
   console.log("               = ʌ ")
   console.log("               = v ")
-  console.log(" Navio Médio   = <=> ")
+  console.log(" Navio Médio   = \033[5;35;47m<=>\033[m")
   console.log("               = ʌ ")
   console.log("               = ǁ ")
   console.log("               = v ")
-  console.log(" Navio Grande  = <==> ")
+  console.log(" Navio Grande  = <==> \033[4;31;45m<==>\033[m")
   console.log("               = ʌ ")
   console.log("               = ǁ ")
   console.log("               = ǁ ")
   console.log("               = v ")
-  console.log(" Bomba         = * ")
-  console.table(tabuleiro)
+  console.log(" Bomba         =º")
+  exibeTabuleiro(tabuleiro)
 }
-
+function exibeTabuleiro(tabuleiro){
+  for(let i=0;i<5;i++){
+    for(let j=0;j<5;j++){
+      process.stdout.write(tabuleiro[i][j]+ " ")
+}
+process.stdout.write("\n")
+  }
+}
 
 
 module.exports = {
