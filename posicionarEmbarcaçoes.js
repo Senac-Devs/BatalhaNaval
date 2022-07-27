@@ -3,7 +3,7 @@ const tamanhoNavio = [2, 3, 4];
 let coordenada;
 let tabela;
 
-function Coordenada(coordenada) {
+function Coordenada(tabuleiro) {
   let linha;
   let info = true;
   let coluna;
@@ -48,6 +48,7 @@ function Coordenada(coordenada) {
   direçao = prompt("V para vertical e H para horizontal: ");
   return [linha, coluna, direçao];
 };
+
 function Navios (tab, tamanhoNavio) {
 
   tab = Posicionamento(tab, tamanhoNavio, 0);
@@ -98,15 +99,20 @@ function Posicionamento(tabela, tamanhoNavio, X) {
   };
   return tabela;
 };
-tabela = Tabela();
-tabela = Navios(tabela, tamanhoNavio)
-console.table(tabela);
 // tabela = Tabela();
+// tabela = Navios(tabela, tamanhoNavio)
 // console.table(tabela);
-tabela = Posição()
-console.table(tabela);
+// // tabela = Tabela();
+// // console.table(tabela);
+// tabela = Posição()
+// console.table(tabela);
 
 // let posicionar = require ("./posicionarEmbarcaçoes.js");
 // posicionar.Posicionamento(tab, tamanhoNavio);
 
 // Por RenatoTonelli 22jun-1600 - criando uma simples chamada para apresentacao do jogo
+
+
+module.exports = {
+  "Coordenada":Coordenada
+}
