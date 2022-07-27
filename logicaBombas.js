@@ -3,7 +3,7 @@ module.exports = {
   "RodarBombas":RodarBombas
 }
 
-function bombas(tabuleiro, linha, coluna) {
+function bombas(tabuleiro, linha, co    luna) {
     let tab = [];
     let acertou = true;
     if (tabuleiro[linha][coluna] == "-") {
