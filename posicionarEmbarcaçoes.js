@@ -2,17 +2,7 @@ const prompt = require("prompt-sync")();
 const tamanhoNavio = [2, 3, 4];
 let coordenada;
 let tabela;
-function Tabela() {
-  let tabela = [];
-  for (let h = 0; h < 5; h++) {
-    tabela.push([]);
-    for (let v = 0; v < 5; v++) {
-      tabela[h][v] = "~";
-    };
-  };
-  console.table(tabela);
-  return tabela;
-};
+
 function Coordenada(coordenada) {
   let linha;
   let info = true;
