@@ -2,18 +2,8 @@ const prompt = require("prompt-sync")();
 const tamanhoNavio = [2, 3, 4];
 let coordenada;
 let tabela;
-function Tabela() {
-  let tabela = [];
-  for (let h = 0; h < 5; h++) {
-    tabela.push([]);
-    for (let v = 0; v < 5; v++) {
-      tabela[h][v] = "~";
-    };
-  };
-  console.table(tabela);
-  return tabela;
-};
-function Coordenada() {
+
+function Coordenada(tabuleiro) {
   let linha;
   let info = true;
   let coluna;
@@ -58,6 +48,7 @@ function Coordenada() {
   direçao = prompt("V para vertical e H para horizontal: ");
   return [linha, coluna, direçao];
 };
+
 function Navios (tab, tamanhoNavio) {
 
   tab = Posicionamento(tab, tamanhoNavio, 0);
@@ -108,15 +99,20 @@ function Posicionamento(tabela, tamanhoNavio, X) {
   };
   return tabela;
 };
-tabela = Tabela();
-tabela = Navios(tabela, tamanhoNavio)
-console.table(tabela);
 // tabela = Tabela();
+// tabela = Navios(tabela, tamanhoNavio)
 // console.table(tabela);
-tabela = Posicionamento();
-console.table(tabela);
+// // tabela = Tabela();
+// // console.table(tabela);
+// tabela = Posição()
+// console.table(tabela);
 
 // let posicionar = require ("./posicionarEmbarcaçoes.js");
 // posicionar.Posicionamento(tab, tamanhoNavio);
 
 // Por RenatoTonelli 22jun-1600 - criando uma simples chamada para apresentacao do jogo
+
+
+module.exports = {
+  "Coordenada":Coordenada
+}

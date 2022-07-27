@@ -7,5 +7,5 @@
 // let model = require ("./exemploDeExportacao.js");
 // model.nomeExportadoDaFunção()
 const prompt = require("prompt-sync")();
-let iniciaJogo = require ("./posicionarEmbarcaçoes.js");
-iniciaJogo.Coordenada(coordenada)
+let iniciaJogo = require ("./batalhaNaval.js");
+iniciaJogo.exportadorIniciaJogo()
