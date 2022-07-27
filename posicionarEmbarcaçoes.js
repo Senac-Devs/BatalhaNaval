@@ -13,7 +13,7 @@ function Tabela() {
   console.table(tabela);
   return tabela;
 };
-function Coordenada(coordenada) {
+function Coordenada() {
   let linha;
   let info = true;
   let coluna;
@@ -72,7 +72,7 @@ function Posicionamento(tabela, tamanhoNavio, X) {
   let jogando = true;
   while (jogando) {
     let [linha, coluna, direçao] = Coordenada(coordenada);
-    console.log(coluna, tamanhoNavio, direçao, X);
+    console.log(coluna, linha, tamanhoNavio[X], direçao, X);
     if ((direçao == "H" || direçao == "h")
       && tamanhoNavio[X] + coluna <= 5) {
      for (let c = 0; c < tamanhoNavio[X]; c++) {
@@ -113,7 +113,7 @@ tabela = Navios(tabela, tamanhoNavio)
 console.table(tabela);
 // tabela = Tabela();
 // console.table(tabela);
-tabela = Posição()
+tabela = Posicionamento();
 console.table(tabela);
 
 // let posicionar = require ("./posicionarEmbarcaçoes.js");
