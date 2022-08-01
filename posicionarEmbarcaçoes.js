@@ -113,6 +113,7 @@ function Posicionamento(tabela, tamanhoNavio, X) {
 // Por RenatoTonelli 22jun-1600 - criando uma simples chamada para apresentacao do jogo
 
 
+
 module.exports = {
   "Coordenada":Coordenada
 }
