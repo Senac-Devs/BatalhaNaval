@@ -1,5 +1,6 @@
 const prompt = require("prompt-sync")();
 
+const moduleMsg = require("./chamaMensagem.js")
 function geraTabuleiro(){
   let tabuleiro = []
   for (let linha = 0; linha < 5; linha++) {
@@ -32,25 +33,10 @@ function apresentacao() {
 }
 
 
-function logicaVisualizacao() { // RenatoTonelli 22jun1647 - funcao criada para ser chamado no jogo
+function logicaVisualizacao() {
   let tabuleiro = geraTabuleiro()
 
-  console.log("******** Jogo  ******")
-  // ʌ
-  console.log(" Água          = ~ ")
-  console.log(" Navio pequeno = <> ")
-  console.log("               = ʌ ")
-  console.log("               = v ")
-  console.log(" Navio Médio   = <=> ")
-  console.log("               = ʌ ")
-  console.log("               = ǁ ")
-  console.log("               = v ")
-  console.log(" Navio Grande  = <==> ")
-  console.log("               = ʌ ")
-  console.log("               = ǁ ")
-  console.log("               = ǁ ")
-  console.log("               = v ")
-  console.log(" Bomba         = * ")
+  moduleMsg.msgInstrucao()
   console.table(tabuleiro)
 }
 
