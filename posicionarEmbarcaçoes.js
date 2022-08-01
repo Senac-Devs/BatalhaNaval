@@ -1,44 +1,47 @@
 const { geraTabuleiro } = require("./logicaDeVisualizacao");
 const prompt = require("prompt-sync")();
 const tamanhoNavio = [2, 3, 4];
-let tabela = geraTabuleiro();
-
-function Coordenada(tabela) {
-  console.log(tabela);
-  let coordenada;
+// let tabela;
+function Funcionamento(tabuleiro) {
+  tabuleiro = Navios(tabuleiro, tamanhoNavio);
+  return tabuleiro;
+}
+function Coordenada(tab) {
   let linha;
-  let coluna;
+  let coordenada;
   let info = true;
+  let coluna;
+  let direçao;
+  console.log("Esses são seus navios:\nPequeno: <>\nMédio: <=>\nGrande:<==>\nEles serão posicionados nessa mesma ordem.\n");
+  console.table(tab);
+  console.log("Onde deseja posicionar?");
   while (info) {
-    console.log("Esses são seus navios:\nPequeno: <>\nMédio: <=>\nGrande:<==>\nEles serão posicionados nessa mesma ordem.\n\n");
-    console.log("Onde deseja posicionar?");
     coordenada = prompt("Letras (Maiúsculas) primeiro!");
     coordenada = coordenada.split("");
-    console.log(coordenada)
     coluna = parseInt(coordenada[1]);
     if (coluna < 0 || coluna > 4) {
       console.log("Coordenada inválida, tente novamente!");
       continue;
     }
     if (coordenada[0] == "A") {
-      linha = parseInt(0);
-      break;
+      linha = 0;
+      info = false;
     }
     else if (coordenada[0] == "B") {
-      linha = parseInt(1);
-      break;
+      linha = 1;
+      info = false;
     }
     else if (coordenada[0] == "C") {
-      linha = parseInt(2);
-      break;
+      linha = 2;
+      info = false;
     }
     else if (coordenada[0] == "D") {
-      linha = parseInt(3);
-      break;
+      linha = 3;
+      info = false;
     }
     else if (coordenada[0] == "E") {
-      linha = parseInt(4);
-      break;
+      linha = 4;
+      info = false;
     }
     else {
       console.log("Coordenada inválida, tente novamente!");
@@ -48,54 +51,55 @@ function Coordenada(tabela) {
   return [linha, coluna, coordenada];
 };
 
-function Navios (tabela, coluna, tamanhoNavio,) {
-  
-  tabela = Posicionamento(tabela, coluna, tamanhoNavio, 0);
-  console.table(tabela);
-  tabela = Posicionamento(tabela, coluna, tamanhoNavio, 1);
-  console.table(tabela);
-  tabela = Posicionamento(tabela, coluna, tamanhoNavio, 2);
-  
+function Navios (tab, tamanhoNavio) {
+
+  tab = Posicionamento(tab, tamanhoNavio, 0);
+  console.table(tab);
+  tab = Posicionamento(tab, tamanhoNavio, 1);
+  console.table(tab);
+  tab = Posicionamento(tab, tamanhoNavio, 2);
+  console.table(tab);
+  prompt("Esses são seus navios posicionados\nClique ENTER para passar ao próximo jogador.");
+  console.clear();
   return tab;
 }
-function Posicionamento(tabela, coluna, tamanhoNavio, X) {
-  let direcao;
+function Posicionamento(tabuleiro, tamanhoNavio, X) {
   let jogando = true;
   while (jogando) {
-    console.log("Vertical ou Horizontal");
-    direcao = prompt("V para vertical e H para horizontal: ");
-    if (direcao == "V" || direcao =="v") {
+    let [linha, coluna, direçao] = Coordenada(tabuleiro);
+    if ((direçao == "H" || direçao == "h")
+      && (tamanhoNavio[X] + coluna <= 5)) {
+      jogando = false;
+      for (let c = 0; c < tamanhoNavio[X]; c++) {
+      if (c == 0) {
+      tabuleiro[linha][coluna] = "<";
+      }
+      else if (c == tamanhoNavio[X]- 1) {
+        tabuleiro[linha][coluna + c] = ">";
+      }
+     else { tabuleiro[linha][coluna + c] = "="; }
+     };
+    }
+    else if ((direçao == "V" || direçao =="v")
+      && (tamanhoNavio[X] + linha <= 5)
+      && (tabuleiro[linha][coluna] == "~")) {
+      jogando = false;
       for (let c = 0; c < tamanhoNavio[X]; c++) {
         if (c == 0) {
-          tabela[linha][coluna] = "ʌ";
+        tabuleiro[linha][coluna] = "ʌ";
         }
         else if (c == tamanhoNavio[X] - 1) {
-          tabela[linha + c][coluna] = "v";
+        tabuleiro[linha + c][coluna] = "v";
         }
-        else { tabela[linha + c][coluna] = "ǁ"; }
+        else { tabuleiro[linha + c][coluna] = "ǁ"; }
       };
     }
     else {
-      console.log("Tente novamente!\nVocê não pode colocar um navio na vertical nesta posição!")
-      continue;
-    };
-    if (direcao == "H" || direcao == "h") {
-     for (let c = 0; c < tamanhoNavio[X]; c++) {
-      if (c == 0) {
-      tabela[linha][coluna] = "<";
-      }
-      else if (c == tamanhoNavio[X]- 1) {
-        tabela[linha][coluna + c] = ">";
-      }
-     else { tabela[linha][coluna + c] = "="; }
-     };
-    }
-    else {
-      console.log("Tente novamente!\nVocê não pode colocar um navio na horizontal nesta posição!")
+      console.log("Tente novamente!\nPosição ou direção inválida!")
       continue;
     };
   };
-  return [tabela, direcao];
+  return tabuleiro;
 };
 // tabela = Tabela();
 // tabela = Navios(tabela, tamanhoNavio)
@@ -112,6 +116,5 @@ function Posicionamento(tabela, coluna, tamanhoNavio, X) {
 
 
 module.exports = {
-  "Coordenada":Coordenada(),
-  "Posicionar":Posicionamento()
+  "Funcionamento":Funcionamento
 }

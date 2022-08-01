@@ -7,10 +7,11 @@ let posicionar = require("./posicionarEmbarcaçoes.js");
 function iniciaJogo() {
   let querJogar = logica.apresentacao();
   if (querJogar){
-    let tabuleiro = logica.geraTabuleiro();
-    Coordenada.Coordenada();
-    posicionar.Posicionamento();
-    modelBombas.RodarBombas();    
+    let tabuleiroJorge = logica.geraTabuleiro();
+    tabuleiroJorge = posicionar.Funcionamento(tabuleiroJorge);
+    let tabuleiroAlberto = logica.geraTabuleiro();
+    tabuleiroAlberto = posicionar.Funcionamento(tabuleiroAlberto);
+    modelBombas.lancarBombas();    
   }
 }
 // modulo de chamada para o index.js
