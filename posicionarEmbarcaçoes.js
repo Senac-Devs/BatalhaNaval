@@ -3,6 +3,7 @@ const tamanhoNavio = [2, 3, 4];
 // let tabela;
 function Funcionamento(tabuleiro) {
   tabuleiro = Navios(tabuleiro, tamanhoNavio);
+  return tabuleiro;
 }
 function Coordenada(tab) {
   let linha;
@@ -11,12 +12,11 @@ function Coordenada(tab) {
   let coluna;
   let direçao;
   console.log("Esses são seus navios:\nPequeno: <>\nMédio: <=>\nGrande:<==>\nEles serão posicionados nessa mesma ordem.\n");
-  console.table(tab + "\n");
+  console.table(tab);
   console.log("Onde deseja posicionar?");
   while (info) {
     coordenada = prompt("Letras (Maiúsculas) primeiro!");
     coordenada = coordenada.split("");
-    console.log(coordenada)
     coluna = parseInt(coordenada[1]);
     if (coluna < 0 || coluna > 4) {
       console.log("Coordenada inválida, tente novamente!");
@@ -60,19 +60,18 @@ function Navios (tab, tamanhoNavio) {
   console.table(tab);
   tab = Posicionamento(tab, tamanhoNavio, 2);
   console.table(tab);
-
+  prompt("Esses são seus navios posicionados\nClique ENTER para passar ao próximo jogador.");
+  console.clear();
   return tab;
 }
 function Posicionamento(tabuleiro, tamanhoNavio, X) {
   let jogando = true;
   while (jogando) {
-    let [linha, coluna, direçao] = Coordenada();
-    console.log(coluna, linha, tamanhoNavio[X], direçao, X, direçao == "H", tamanhoNavio[X] + coluna <= 5);
+    let [linha, coluna, direçao] = Coordenada(tabuleiro);
     if ((direçao == "H" || direçao == "h")
       && (tamanhoNavio[X] + coluna <= 5)) {
       jogando = false;
       for (let c = 0; c < tamanhoNavio[X]; c++) {
-      console.log(c)
       if (c == 0) {
       tabuleiro[linha][coluna] = "<";
       }
@@ -83,7 +82,8 @@ function Posicionamento(tabuleiro, tamanhoNavio, X) {
      };
     }
     else if ((direçao == "V" || direçao =="v")
-      && (tamanhoNavio[X] + linha <= 5)) {
+      && (tamanhoNavio[X] + linha <= 5)
+      && (tabuleiro[linha][coluna] == "~")) {
       jogando = false;
       for (let c = 0; c < tamanhoNavio[X]; c++) {
         if (c == 0) {
