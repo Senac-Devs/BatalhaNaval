@@ -10,7 +10,7 @@ function iniciaJogo() {
     tabuleiroJorge = posicionar.Funcionamento(tabuleiroJorge);
     let tabuleiroAlberto = logica.geraTabuleiro();
     tabuleiroAlberto = posicionar.Funcionamento(tabuleiroAlberto);
-    // modelBombas.lancarBombas();    
+    modelBombas.lancarBombas();    
   }
 }
 // modulo de chamada para o index.js
