@@ -2,10 +2,10 @@ const prompt = require("prompt-sync")();
 
 function geraTabuleiro(){
   let tabuleiro = []
-  for (let i = 0; i < 5; i++) {
+  for (let linha = 0; linha < 5; linha++) {
     tabuleiro.push([])
-    for (let j = 0; j < 5; j++) {
-      tabuleiro[i].push("~")
+    for (let coluna = 0; coluna < 5; coluna++) {
+      tabuleiro[linha].push("~")
     }
   }
   return tabuleiro
