@@ -52,7 +52,7 @@ function logicaVisualizacao() {
     console.log("               = ǁ ");
     console.log("               = ǁ ");
     console.log("               = v ");
-    console.log(" Bomba         = \033[0;32;31m💣\33[m");
+    console.log(" Bomba         = \U0001F94A3");
     console.log(" Acertou!!     = \033[0;32;47m☑\33[m");
     console.log(" Errou!!       = \033[0;00;31mX\33[m ");
     console.table(tabuleiro);
