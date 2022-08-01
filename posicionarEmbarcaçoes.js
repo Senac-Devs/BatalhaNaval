@@ -11,7 +11,6 @@ function Coordenada(tab) {
   let coordenada;
   let info = true;
   let coluna;
-  let direçao;
   console.log("Esses são seus navios:\nPequeno: <>\nMédio: <=>\nGrande:<==>\nEles serão posicionados nessa mesma ordem.\n");
   console.table(tab);
   console.log("Onde deseja posicionar?");
@@ -48,7 +47,12 @@ function Coordenada(tab) {
       continue;
     };
   };
-  return [linha, coluna, coordenada];
+  return [linha, coluna];
+};
+
+function Direcao(){
+  let direcao = prompt("Qual direção deseja, horizontal ou vertical?(H/V)")
+  return direcao
 };
 
 function Navios (tab, tamanhoNavio) {
@@ -62,11 +66,14 @@ function Navios (tab, tamanhoNavio) {
   prompt("Esses são seus navios posicionados\nClique ENTER para passar ao próximo jogador.");
   console.clear();
   return tab;
-}
+};
+
 function Posicionamento(tabuleiro, tamanhoNavio, X) {
   let jogando = true;
   while (jogando) {
-    let [linha, coluna, direçao] = Coordenada(tabuleiro);
+    let [linha, coluna] = Coordenada(tabuleiro);
+    let direçao = Direcao();
+    console.log(linha, coluna, direçao)
     if ((direçao == "H" || direçao == "h")
       && (tamanhoNavio[X] + coluna <= 5)) {
       jogando = false;

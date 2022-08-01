@@ -19,4 +19,3 @@ module.exports = {
   "exportadorIniciaJogo": iniciaJogo
 }
 logica.apresentaLogica();
-  
