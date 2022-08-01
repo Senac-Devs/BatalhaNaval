@@ -1,11 +1,12 @@
 const prompt = require("prompt-sync")();
 
-function geraTabuleiro(){
-  let tabuleiro = []
-  for (let linha = 0; linha < 5; linha++) {
-    tabuleiro.push([])
-    for (let coluna = 0; coluna < 5; coluna++) {
-      tabuleiro[linha].push("~")
+function geraTabuleiro() {
+    let tabuleiro = [];
+    for (let linha = 0; linha < 5; linha++) {
+        tabuleiro.push([]);
+        for (let coluna = 0; coluna < 5; coluna++) {
+            tabuleiro[linha].push("~");
+        }
     }
     return tabuleiro;
 }
@@ -51,7 +52,7 @@ function logicaVisualizacao() {
     console.log("               = ǁ ");
     console.log("               = ǁ ");
     console.log("               = v ");
-    console.log(" Bomba         = \U0001F94A3");
+    console.log(" Bomba         = \033[0;00;31m*\33[m");
     console.log(" Acertou!!     = \033[0;32;47m☑\33[m");
     console.log(" Errou!!       = \033[0;00;31mX\33[m ");
     console.table(tabuleiro);
@@ -82,4 +83,4 @@ module.exports = {
 // <> <=> <==>  *  o desenho
 // }
 // }
-//      console.table(tabuleiro1)
+//  console.table(tabuleiro1)
