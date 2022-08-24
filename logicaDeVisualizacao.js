@@ -58,7 +58,7 @@ function logicaVisualizacao() { // RenatoTonelli 22jun1647 - funcao criada para 
 
 // Por RenatoTonelli 22jun-1651 - criando uma simples chamada para apresentacao do jogo
 module.exports = {
-  "apresentaLogica":logicaVisualizacao,
+  "logicaVisualizacao":logicaVisualizacao,
   "geraTabuleiro": geraTabuleiro,
   "apresentacao": apresentacao
 }

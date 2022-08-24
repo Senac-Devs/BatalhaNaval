@@ -5,23 +5,13 @@ function Funcionamento(tabuleiro) {
   tabuleiro = Navios(tabuleiro, tamanhoNavio);
   return tabuleiro;
 }
-function Coordenada(tab) {
-  let linha;
-  let coordenada;
-  let info = true;
-  let coluna;
-  let direçao;
-  console.log("Esses são seus navios:\nPequeno: <>\nMédio: <=>\nGrande:<==>\nEles serão posicionados nessa mesma ordem.\n");
-  console.table(tab);
-  console.log("Onde deseja posicionar?");
-  while (info) {
-    coordenada = prompt("Letras (Maiúsculas) primeiro!");
+function transformaCordenada(coordenada){
     coordenada = coordenada.split("");
     coluna = parseInt(coordenada[1]);
     if (coluna < 0 || coluna > 4) {
       console.log("Coordenada inválida, tente novamente!");
-      continue;
-    }
+    return ["false", "false"]
+    } 
     if (coordenada[0] == "A") {
       linha = 0;
       info = false;
@@ -44,9 +34,25 @@ function Coordenada(tab) {
     }
     else {
       console.log("Coordenada inválida, tente novamente!");
-      continue;
+     return ["false", "false"]
     };
-  };
+  return [linha, coluna]
+}
+
+function Coordenada(tab) {
+  let coordenada;
+  let info = true;
+  let direçao;
+  console.log("Esses são seus navios:\nPequeno: <>\nMédio: <=>\nGrande:<==>\nEles serão posicionados nessa mesma ordem.\n");
+  console.table(tab);
+  console.log("Onde deseja posicionar?");
+  while (info){
+    coordenada = prompt("Letras (Maiúsculas) primeiro!");
+    let [linha, coluna] = transformaCordenada(coordenada)
+  if (linha != "false" && coluna != "false"){
+    info = false
+  }
+  }
   console.log("Vertical ou Horizontal");
   direçao = prompt("V para vertical e H para horizontal: ");
   return [linha, coluna, direçao];
@@ -116,6 +122,8 @@ function Posicionamento(tabuleiro, tamanhoNavio, X) {
 // Por RenatoTonelli 22jun-1600 - criando uma simples chamada para apresentacao do jogo
 
 
+
 module.exports = {
-  "Funcionamento":Funcionamento
+  "Funcionamento":Funcionamento,
+  "transformaCordenada" : transformaCordenada
 }
